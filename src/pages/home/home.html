@@ -1,14 +1,19 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
       Ionic Blank
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <ion-list>
+    <button (click)="catClicked(cat)" ion-item *ngFor="let cat of cats">{{cat.name}}<ion-note item-right>{{cat.created | amTimeAgo}}</ion-note></button>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab (click)="addCat()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <loader *ngIf="loading"></loader>
 </ion-content>
